@@ -22,10 +22,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log('props', this.props)
     const {id, username, profile_pic} = this.props
-    console.log('name', username)
-    console.log('pic', profile_pic)
     return(
       <div>
         <img src={profile_pic} alt='profile' />
