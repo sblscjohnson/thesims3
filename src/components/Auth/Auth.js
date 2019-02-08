@@ -12,20 +12,20 @@ class Auth extends Component {
     }
   }
 
-  componentDidMount() {
-    const {id} = this.props;
-    if(id) {
-      this.props.history.push('./dashboard')
-    } else {
-      axios.get('/api/user')
-      .then(res => {
-        this.props.updateUser(res.data)
-        this.props.history.push('./dashboard')
-      }).catch({
+  // componentDidMount() {
+  //   const {id} = this.props;
+  //   if(id) {
+  //     this.props.history.push('./dashboard')
+  //   } else {
+  //     axios.get('/api/user')
+  //     .then(res => {
+  //       this.props.updateUser(res.data)
+  //       this.props.history.push('./dashboard')
+  //     }).catch({
     
-      })
-    }
-  }
+  //     })
+  //   }
+  // }
 
   handleChange = (prop, val) => {
     console.log(val)
