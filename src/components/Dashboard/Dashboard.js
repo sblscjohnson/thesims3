@@ -1,14 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import axios from 'axios';
 import {updateUser} from './../../ducks/reducer';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
+
+  componentDidMount() {
+    const {id} = this.props;
+    if(!id) {
+      axios.get('/api/user')
+      .then(res => {
+        this.props.updateUser(res.data)
+      }).catch(res => {
+        this.props.history.push('/')
+      })
+    }
+  }
+
   render() {
-    console.log(this.props)
+    console.log('props', this.props)
     const {id, username, profile_pic} = this.props
     console.log('name', username)
     console.log('pic', profile_pic)

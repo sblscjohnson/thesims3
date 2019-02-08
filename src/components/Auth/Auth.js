@@ -41,7 +41,7 @@ class Auth extends Component {
       this.props.updateUser(res.data)
       this.props.history.push('/dashboard')
     }).catch(err => {
-      console.log('error with reg', err)
+      console.log('error with registration', err)
     })
     this.setState({
       username: '',
@@ -49,6 +49,16 @@ class Auth extends Component {
     })
   }
 
+  handleLogin = () => {
+    const {username, password} = this.state;
+    axios.post('/auth/login', {username, password})
+    .then(res => {
+      this.props.updateUser(res.data);
+      this.props.history.push('/dashboard')
+    }).catch(err => {
+      console.log('error with login', err)
+    })
+  }
 
   render() {
     const {username, password} = this.state;
